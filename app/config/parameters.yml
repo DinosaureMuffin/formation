@@ -10,3 +10,6 @@ parameters:
     mailer_user: null
     mailer_password: null
     secret: ThisTokenIsNotSoSecretChangeIt
+    mandrillapp_key: sN0TG8b_JHq6xYhabDoLzw
+    mandrill_sender: test@iadfrance.fr
+    mandrill_sender_name: IaDFrance

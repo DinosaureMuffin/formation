@@ -127,18 +127,27 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // ia_d_training_homepage
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ia_d_training_homepage')), array (  '_controller' => 'IaD\\Bundle\\TrainingBundle\\Controller\\DefaultController::indexAction',));
-        }
-
-        // homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'homepage');
+        if (0 === strpos($pathinfo, '/hello')) {
+            // iad_training_homepage
+            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'iad_training_homepage')), array (  '_controller' => 'Iad\\Bundle\\TrainingBundle\\Controller\\DefaultController::indexAction',));
             }
 
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
+            // iad_bundle_training_hello
+            if ($pathinfo === '/hello') {
+                return array (  '_controller' => 'Iad\\Bundle\\TrainingBundle\\Controller\\BusinessTrainingServiceController::sayAction',  '_route' => 'iad_bundle_training_hello',);
+            }
+
+        }
+
+        // iad_bundle_training_mailer
+        if ($pathinfo === '/mailer') {
+            return array (  '_controller' => 'Iad\\Bundle\\TrainingBundle\\Controller\\MandrillController::indexAction',  '_route' => 'iad_bundle_training_mailer',);
+        }
+
+        // iad_training_test_service
+        if ($pathinfo === '/Business/BusinessTrainingService') {
+            return array('_route' => 'iad_training_test_service');
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

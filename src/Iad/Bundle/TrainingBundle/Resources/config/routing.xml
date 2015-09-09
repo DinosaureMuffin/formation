@@ -7,4 +7,10 @@
     <route id="iad_training_homepage" path="/hello/{name}">
         <default key="_controller">IadTrainingBundle:Default:index</default>
     </route>
+    <route id="iad_bundle_training_hello" path="/hello">
+        <default key="_controller">IadTrainingBundle:BusinessTrainingService:say</default>
+    </route>
+    <route id="iad_bundle_training_mailer" path="/mailer">
+        <default key="_controller">IadTrainingBundle:Mandrill:index</default>
+    </route>
 </routes>

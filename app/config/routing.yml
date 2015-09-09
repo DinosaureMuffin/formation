@@ -3,5 +3,8 @@ iad_training:
     prefix:   /
 
 app:
-    resource: "@AppBundle/Controller/"
+    resource: "Iad\Bundle\TrainingBundle\Business\BusinessTrainingService"
     type:     annotation
+
+iad_training_test_service:
+    path: /Business/BusinessTrainingService
