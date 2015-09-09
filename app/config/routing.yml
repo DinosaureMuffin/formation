@@ -1,3 +1,7 @@
+iad_training:
+    resource: "@IadTrainingBundle/Resources/config/routing.xml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
